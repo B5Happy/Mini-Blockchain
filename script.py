@@ -1,9 +1,11 @@
-# import sha256
-from hashlib import sha256
+from blockchain import Blockchain
 
-# text to hash
-text = "I am excited to learn about blockchain!"
-hash_result = sha256(text.encode())
+new_transactions = [{'amount': '30', 'sender':'alice', 'receiver':'bob'},
+               	{'amount': '55', 'sender':'bob', 'receiver':'alice'}]
 
-# print result
-print(hash_result.hexdigest())
+
+my_blockchain = Blockchain()
+my_blockchain.add_block(new_transactions)
+my_blockchain.print_blocks()
+my_blockchain.chain[1].transactions = 'fake_transactions'
+my_blockchain.validate_chain()
